@@ -21,19 +21,19 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var archiveImageView: UIImageView!
     
     @IBOutlet weak var messageContainer: UIView!
-    
-    @IBOutlet weak var rescheduleScreenImageView: UIImageView!
-    
+
     @IBOutlet weak var rescheduleView: UIView!
-    
+
     @IBOutlet weak var listView: UIView!
+
+    @IBOutlet weak var feedImageView: UIImageView!
+    
+    var feedOriginalPosition: CGPoint!
     
     var messageOriginalCenter: CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         scrollView.contentSize = CGSize(width: 320, height: 1432)
         
@@ -42,6 +42,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         rescheduleView.alpha = 0
         
         listView.alpha = 0
+    
         
     }
 
@@ -50,6 +51,16 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onRescheduleTap(sender: UITapGestureRecognizer) {
+        var point = sender.locationInView(view)
+        rescheduleView.alpha = 0
+        
+        UIView.animateWithDuration(0.5) {
+            self.feedImageView.center.y = 745
+            
+        }
+        messageView.center.x = messageOriginalCenter.x
+    }
 
     @IBAction func onMessagePan(sender: UIPanGestureRecognizer) {
         
@@ -61,6 +72,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             print("Gesture began at: \(point)")
             
             messageOriginalCenter = messageView.center
+       
             archiveImageView.alpha = 0
             laterImageView.alpha = 0
             listImageView.alpha = 0
@@ -79,7 +91,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                     //brown bkgd, show list options
                     // greater than 260 pt
                    
-                    self.messageContainer.backgroundColor = UIColor.brownColor()
+                    self.messageContainer.backgroundColor = UIColor(red: 199.0/255.0, green: 141.0/255.0, blue: 60.0/255.0, alpha: 1.0)
                     self.laterImageView.alpha = 0
                     self.listImageView.alpha = 1
                     self.archiveImageView.alpha = 0
@@ -89,10 +101,10 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 else if messageView.center.x < 99  {
                     print("Yellow")
         
-                    // Yellow bkgd, show schedule options
+                    // YELLOW bkgd, show schedule options
                     // greater than 60 pts
                     
-                    self.messageContainer.backgroundColor = UIColor.yellowColor()
+                    self.messageContainer.backgroundColor = UIColor(red: 250.0/255.0, green: 218.0/255.0, blue: 12.0/255.0, alpha: 1.0)
                     self.laterImageView.alpha = 1
                     self.listImageView.alpha = 0
                     self.archiveImageView.alpha = 0
@@ -104,7 +116,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                     // less than 60pts
                     //snap back upon release to orig / Gray already
                     
-                    self.messageContainer.backgroundColor = UIColor.grayColor()
+                    self.messageContainer.backgroundColor = UIColor(red: 220.0/255.0, green: 222.0/255.0, blue: 220.0/255.0, alpha: 1.0)
                     self.laterImageView.alpha = 1
                     self.listImageView.alpha = 0
                     self.archiveImageView.alpha = 0
@@ -116,18 +128,18 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
 
             else if messageView.center.x < 210 {
                 print("Will return to Orig")
-                //snap back upon release to orig / Gray background
-                self.messageContainer.backgroundColor = UIColor.grayColor()
+                //snap back upon release to orig / GRAY background
+                self.messageContainer.backgroundColor = UIColor(red: 220.0/255.0, green: 222.0/255.0, blue: 220.0/255.0, alpha: 1.0)
                 }
             else if messageView.center.x < 410 {
                 print("Green")
                 // green bkgd and hide message
-                self.messageContainer.backgroundColor = UIColor.greenColor()
+                self.messageContainer.backgroundColor = UIColor(red: 116.0/255.0, green: 240.0/255.0, blue: 74.0/255.0, alpha: 1.0)
                 }
             else if messageView.center.x > 410 {
                 print("Red ")
                 // red bkgd and hide message
-                self.messageContainer.backgroundColor = UIColor.redColor()
+                self.messageContainer.backgroundColor = UIColor(red: 227.0/255.0, green: 36.0/255.0, blue: 36.0/255.0, alpha: 1.0)
                 }
  
             
@@ -141,20 +153,22 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                     // greater than 260 pt - BROWN
                     // Show list screen
                     //print("=== Ended LEFT 260 pts ===")
-                    rescheduleView.alpha = 0
+                    //rescheduleView.alpha = 0
+                    
                     listView.alpha = 1
+                    print("SEE LIST")
                 }
                 
                 else if messageView.center.x < 99  {
-                    // greater than 60 pts
+                    // greater than 60 pts - YELLOW
                     // bring up reschedule screen
-                    
-                    //UIView.animateWithDuration(0.5) {
-                    listView.alpha = 0
-                    rescheduleView.alpha = 1
-                    //rescheduleScreenImageView.alpha = 1.0
                     print("SEE RESCHED SCREEN HERE")
-                  //  }
+                    messageView.alpha = 0
+                    
+                    UIView.animateWithDuration(0.5) {
+                        self.rescheduleView.alpha = 1
+                    }
+
                     
                 }
                 
@@ -176,22 +190,20 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+
+
+
+
     
-    @IBAction func onRescheduleScreenButton(sender: AnyObject) {
-        
-        UIView.animateWithDuration(0.5) {
-        self.rescheduleView.alpha = 0
-        }
-    }
-    
+
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

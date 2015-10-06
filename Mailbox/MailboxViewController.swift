@@ -55,27 +55,25 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         var point = sender.locationInView(view)
         listView.alpha = 0
         
-        UIView.animateWithDuration(0.5) {
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
             self.feedImageView.center.y = 745
-            
+            }) { (completed) -> Void in
+                
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    self.feedImageView.center.y = 830
+                    self.messageView.alpha = 1
+                    self.messageView.center.x = 160
+                    }, completion: { (completed) -> Void in
+                })
+                
+                
         }
-        messageView.center.x = messageOriginalCenter.x
     }
     
     @IBAction func onRescheduleTap(sender: UITapGestureRecognizer) {
         var point = sender.locationInView(view)
         rescheduleView.alpha = 0
         
-        //UIView.animateWithDuration(0.5) {
-        //    self.feedImageView.center.y = 745
-        //
-       // }
-        
-        
-        //UIView.animateWithDuration(0.5) {
-          //  self.feedImageView.center.y = 900
-            
-        //}
         
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             self.feedImageView.center.y = 745
@@ -89,7 +87,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                     })
         
             
-    }
+        }
     }
 
     @IBAction func onMessagePan(sender: UIPanGestureRecognizer) {
@@ -165,7 +163,11 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 print("Green")
                 // green bkgd and hide message
                 self.messageContainer.backgroundColor = UIColor(red: 116.0/255.0, green: 240.0/255.0, blue: 74.0/255.0, alpha: 1.0)
+                    
+                    
                 }
+                    
+                    
             else if messageView.center.x > 410 {
                 print("Red ")
                 // red bkgd and hide message
@@ -180,7 +182,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
 
                 if messageView.center.x < -100 {
                     
-                    // greater than 260 pt - BROW
+                    // greater than 260 pt - BROWN
                     
                     messageView.alpha = 0
                     UIView.animateWithDuration(0.5) {
@@ -209,8 +211,58 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
 
                 
             }
-            
-            
+                else if messageView.center.x < 210 {
+                    print("Will return to Orig")
+                    // GRAY background
+           
+                }
+                else if messageView.center.x < 410 {
+                    print("Green")
+                    // green bkgd
+                    messageView.alpha = 0
+  
+                    
+                    UIView.animateWithDuration(0.5, animations: { () -> Void in
+                        self.feedImageView.center.y = 745
+                        }) { (completed) -> Void in
+                            
+                            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                                self.feedImageView.center.y = 830
+                                self.messageView.alpha = 1
+                                self.messageView.center.x = 160
+                                }, completion: { (completed) -> Void in
+                            })
+                            
+                            
+                    }
+                    
+                    
+                
+                }
+                    
+                    
+                else if messageView.center.x > 410 {
+                    print("Red ")
+                    // red bkgd
+                    
+                    messageView.alpha = 0
+                    
+                    
+                    UIView.animateWithDuration(0.5, animations: { () -> Void in
+                        self.feedImageView.center.y = 745
+                        }) { (completed) -> Void in
+                            
+                            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                                self.feedImageView.center.y = 830
+                                self.messageView.alpha = 1
+                                self.messageView.center.x = 160
+                                }, completion: { (completed) -> Void in
+                            })
+                            
+                            
+                    }
+
+            }
             
         }
 

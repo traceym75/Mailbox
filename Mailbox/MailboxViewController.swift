@@ -51,15 +51,45 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onRescheduleTap(sender: UITapGestureRecognizer) {
+    @IBAction func onListTap(sender: UITapGestureRecognizer) {
         var point = sender.locationInView(view)
-        rescheduleView.alpha = 0
+        listView.alpha = 0
         
         UIView.animateWithDuration(0.5) {
             self.feedImageView.center.y = 745
             
         }
         messageView.center.x = messageOriginalCenter.x
+    }
+    
+    @IBAction func onRescheduleTap(sender: UITapGestureRecognizer) {
+        var point = sender.locationInView(view)
+        rescheduleView.alpha = 0
+        
+        //UIView.animateWithDuration(0.5) {
+        //    self.feedImageView.center.y = 745
+        //
+       // }
+        
+        
+        //UIView.animateWithDuration(0.5) {
+          //  self.feedImageView.center.y = 900
+            
+        //}
+        
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.feedImageView.center.y = 745
+            }) { (completed) -> Void in
+                
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    self.feedImageView.center.y = 830
+                    self.messageView.alpha = 1
+                    self.messageView.center.x = 160
+                    }, completion: { (completed) -> Void in
+                    })
+        
+            
+    }
     }
 
     @IBAction func onMessagePan(sender: UIPanGestureRecognizer) {
@@ -150,21 +180,19 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
 
                 if messageView.center.x < -100 {
                     
-                    // greater than 260 pt - BROWN
-                    // Show list screen
-                    //print("=== Ended LEFT 260 pts ===")
-                    //rescheduleView.alpha = 0
+                    // greater than 260 pt - BROW
                     
-                    listView.alpha = 1
-                    print("SEE LIST")
+                    messageView.alpha = 0
+                    UIView.animateWithDuration(0.5) {
+                        self.listView.alpha = 1
+                    }
                 }
                 
                 else if messageView.center.x < 99  {
                     // greater than 60 pts - YELLOW
                     // bring up reschedule screen
-                    print("SEE RESCHED SCREEN HERE")
-                    messageView.alpha = 0
                     
+                    messageView.alpha = 0
                     UIView.animateWithDuration(0.5) {
                         self.rescheduleView.alpha = 1
                     }

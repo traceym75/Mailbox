@@ -76,6 +76,10 @@
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="list" id="gH1-RI-1bG">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <autoresizingMask key="autoresizingMask"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="4qH-2E-mgs" appends="YES" id="4Gc-lw-M1s"/>
+                                                </connections>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -120,6 +124,11 @@
                 <tapGestureRecognizer id="kBp-pC-rCv">
                     <connections>
                         <action selector="onRescheduleTap:" destination="BYZ-38-t0r" id="aRx-4P-iD2"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="4qH-2E-mgs">
+                    <connections>
+                        <action selector="onListTap:" destination="BYZ-38-t0r" id="co2-9n-yPH"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

@@ -14,6 +14,10 @@
 		7CC7564C1BBCEF9F007D6AAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC7564A1BBCEF9F007D6AAB /* LaunchScreen.storyboard */; };
 		7CC756571BBCEF9F007D6AAB /* MailboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC756561BBCEF9F007D6AAB /* MailboxTests.swift */; };
 		7CC756621BBCEF9F007D6AAB /* MailboxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC756611BBCEF9F007D6AAB /* MailboxUITests.swift */; };
+		7CC756701BBCF29D007D6AAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CC7566F1BBCF29D007D6AAB /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
+		7CC756721BBCF3E5007D6AAB /* MailboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC756711BBCF3E5007D6AAB /* MailboxViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		7CC756741BBD0438007D6AAB /* MessageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC756731BBD0438007D6AAB /* MessageContainerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		7CC756761BBD0D5D007D6AAB /* testSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC756751BBD0D5D007D6AAB /* testSwipeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		7CC7565D1BBCEF9F007D6AAB /* MailboxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MailboxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC756611BBCEF9F007D6AAB /* MailboxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailboxUITests.swift; sourceTree = "<group>"; };
 		7CC756631BBCEF9F007D6AAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC7566F1BBCF29D007D6AAB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7CC756711BBCF3E5007D6AAB /* MailboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailboxViewController.swift; sourceTree = "<group>"; };
+		7CC756731BBD0438007D6AAB /* MessageContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageContainerViewController.swift; sourceTree = "<group>"; };
+		7CC756751BBD0D5D007D6AAB /* testSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testSwipeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +108,13 @@
 				7CC756411BBCEF9F007D6AAB /* AppDelegate.swift */,
 				7CC756431BBCEF9F007D6AAB /* ViewController.swift */,
 				7CC756451BBCEF9F007D6AAB /* Main.storyboard */,
+				7CC756751BBD0D5D007D6AAB /* testSwipeViewController.swift */,
+				7CC756731BBD0438007D6AAB /* MessageContainerViewController.swift */,
+				7CC756711BBCF3E5007D6AAB /* MailboxViewController.swift */,
 				7CC756481BBCEF9F007D6AAB /* Assets.xcassets */,
 				7CC7564A1BBCEF9F007D6AAB /* LaunchScreen.storyboard */,
 				7CC7564D1BBCEF9F007D6AAB /* Info.plist */,
+				7CC7566F1BBCF29D007D6AAB /* Images.xcassets */,
 			);
 			path = Mailbox;
 			sourceTree = "<group>";
@@ -229,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CC7564C1BBCEF9F007D6AAB /* LaunchScreen.storyboard in Resources */,
+				7CC756701BBCF29D007D6AAB /* Images.xcassets in Resources */,
 				7CC756491BBCEF9F007D6AAB /* Assets.xcassets in Resources */,
 				7CC756471BBCEF9F007D6AAB /* Main.storyboard in Resources */,
 			);
@@ -257,6 +270,9 @@
 			files = (
 				7CC756441BBCEF9F007D6AAB /* ViewController.swift in Sources */,
 				7CC756421BBCEF9F007D6AAB /* AppDelegate.swift in Sources */,
+				7CC756741BBD0438007D6AAB /* MessageContainerViewController.swift in Sources */,
+				7CC756721BBCF3E5007D6AAB /* MailboxViewController.swift in Sources */,
+				7CC756761BBD0D5D007D6AAB /* testSwipeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +412,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "BrandAsset-2";
 				INFOPLIST_FILE = Mailbox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.traceyewart.Mailbox;
@@ -407,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "BrandAsset-2";
 				INFOPLIST_FILE = Mailbox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.traceyewart.Mailbox;
